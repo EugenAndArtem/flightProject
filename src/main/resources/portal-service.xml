@@ -21,23 +21,37 @@
     <!-- See http://static.springsource.org/spring/docs/3.0.x/javadoc-api/org/springframework/orm/hibernate3/annotation/AnnotationSessionFactoryBean.html -->
     <!-- See http://docs.jboss.org/hibernate/stable/core/api/index.html?org/hibernate/SessionFactory.html -->
     <!-- See http://docs.jboss.org/hibernate/stable/core/api/index.html?org/hibernate/Session.html -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
-          p:dataSource-ref="dataSource"
-          p:configLocation="${hibernate.config}"
-          p:packagesToScan="org.krams.tutorial"/>
+
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <property name="configurationClass">
+            <value>org.hibernate.cfg.AnnotationConfiguration</value>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.dialect">${jdbc.dialect}</prop>
+                <prop key="hibernate.connection.charSet">UTF-8</prop>
+            </props>
+        </property>
+    </bean>
 
     <!-- Declare a datasource that has pooling capabilities-->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-          destroy-method="close"
-          p:driverClass="${app.jdbc.driverClassName}"
-          p:jdbcUrl="${app.jdbc.url}"
-          p:user="${app.jdbc.username}"
-          p:password="${app.jdbc.password}"
-          p:acquireIncrement="5"
-          p:idleConnectionTestPeriod="60"
-          p:maxPoolSize="100"
-          p:maxStatements="50"
-          p:minPoolSize="10" />
+
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}" />
+
+
 
     <!-- Declare a transaction manager-->
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"

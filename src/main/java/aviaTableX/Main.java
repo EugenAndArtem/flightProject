@@ -1,12 +1,17 @@
 package aviaTableX;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /**
  * Created by Артём on 21.02.2016.
  */
 public class Main {
     public static void main(String[] args) {
-        ExistOfType exist = new ExistOfType();
-        exist.exist();
+        //ExistOfType exist = new ExistOfType();
+        //exist.exist();
+        ApplicationContext appContext =
+                new ClassPathXmlApplicationContext("portal-service.xml");
 
         /*
         RouteImpl route = new RouteImpl("Ot", "Do");
@@ -15,6 +20,34 @@ public class Main {
         FlightDAO flightDAO = new FlightDAOImpl();
         Flight flightNew;
         show(flight);
+
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+          p:dataSource-ref="dataSource"
+          p:configLocation="${hibernate.config}"
+          p:packagesToScan="aviaTableX"/>
+
+
+        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close"
+          p:driverClass="${app.jdbc.driverClassName}"
+          p:jdbcUrl="${app.jdbc.url}"
+          p:user="${app.jdbc.username}"
+          p:password="${app.jdbc.password}"
+          p:acquireIncrement="5"
+          p:idleConnectionTestPeriod="60"
+          p:maxPoolSize="100"
+          p:maxStatements="50"
+          p:minPoolSize="10" />
+
+
+
+
+
+
+
+
+
+
         try {
 
             routeDAO.addRoute(route);
