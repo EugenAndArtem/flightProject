@@ -15,7 +15,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "flights")
-public class InnerFlight implements Flight,Serializable {
+public class FlightImpl implements Flight, Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,11 +41,11 @@ public class InnerFlight implements Flight,Serializable {
     @JoinColumn(name = "idRoute")
     private RouteImpl route;////////////////////
 
-
-    public InnerFlight(){
+    public FlightImpl() {
 
     }
-    public InnerFlight(int number,String planeName,String startTime,String flightTime,Route route, Type type){
+
+    public FlightImpl(int number, String planeName, String startTime, String flightTime, Route route, Type type) {
         this.number = number;
         this.planeName = planeName;
         this.startTime = startTime;
@@ -53,24 +53,24 @@ public class InnerFlight implements Flight,Serializable {
         this.route = (RouteImpl) route;
         this.type = type;
     }
-    public int getId(){
+
+    public int getId() {
         return id;
     }
-    public int getNumber(){
+
+    public int getNumber() {
         return number;
     }
 
-
-
-    public String getPlaneName(){
+    public String getPlaneName() {
         return planeName;
     }
 
-    public String getStartTime(){
+    public String getStartTime() {
         return startTime;
     }
 
-    public String getFlightTime(){
+    public String getFlightTime() {
         return flightTime;
     }
 
@@ -98,18 +98,16 @@ public class InnerFlight implements Flight,Serializable {
         this.route = route;
     }
 
-    public Route getRoute(){
+    public Route getRoute() {
         return route;
     }
 
-    public String getType() {return type.getType();}
-    /*public String toJson(){
-        GsonBuilder builder=new GsonBuilder();
-        Gson gson=builder.create();
-        return gson.toJson(this);
-    }*/
-    public String toString(){
-        return "Inner Flight "+Integer.toString(number) +" " + planeName + " from " + route.getFromPoint() + " to " + route.getToPoint() + " starts at " + startTime +
+    public int getType() {
+        return type.getType();
+    }
+
+    public String toString() {
+        return "Inner Flight " + Integer.toString(number) + " " + planeName + " from " + route.getFromPoint() + " to " + route.getToPoint() + " starts at " + startTime +
                 " and arrives at " + flightTime;
     }
 

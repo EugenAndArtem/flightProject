@@ -3,6 +3,7 @@ package aviaTableX;
 /**
  * Created by Артём on 05.02.2016.
  */
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,19 +12,20 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "routes")
-public class RouteImpl implements Route,Serializable {
+public class RouteImpl implements Route, Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "fromPoint")
     private String fromPoint;
-    @Column (name = "toPoint")
+    @Column(name = "toPoint")
     private String toPoint;
 
-    public RouteImpl(){
+    public RouteImpl() {
 
     }
+
     public RouteImpl(String from, String to) {
         fromPoint = from;
         toPoint = to;
@@ -32,7 +34,8 @@ public class RouteImpl implements Route,Serializable {
     public String getFromPoint() {
         return fromPoint;
     }
-    public int getId(){
+
+    public int getId() {
         return id;
     }
 
@@ -40,25 +43,8 @@ public class RouteImpl implements Route,Serializable {
         return toPoint;
     }
 
-    /*public String toJson() {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        return gson.toJson(this);
-    }*/
-
-    public String toString(){
+    public String toString() {
         return "Route from " + fromPoint + " to " + toPoint;
     }
 
-    /*
-    @OneToMany(mappedBy = "route")
-    private Collection<InnerFlight> innerFlight;
-
-    public Collection<InnerFlight> getInnerFlight() {
-        return innerFlight;
-    }
-
-    public void setInnerFlight(Collection<InnerFlight> innerFlight) {
-        this.innerFlight = innerFlight;
-    }*/
 }

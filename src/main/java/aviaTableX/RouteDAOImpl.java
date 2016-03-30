@@ -1,7 +1,8 @@
 package aviaTableX;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,50 +10,32 @@ import java.util.ArrayList;
 /**
  * Created by Артём on 09.02.2016.
  */
+@Repository("RouteDAO")
 public class RouteDAOImpl implements RouteDAO {
+    @Autowired
+    private SessionFactory sessionFactory;
+
     public void addRoute(Route route) throws SQLException {
-        Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().getCurrentSession();
-            session.beginTransaction();
-            session.save(route);
-            session.getTransaction().commit();
+            sessionFactory.getCurrentSession().save(route);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen())
-            {
-                session.close();
-            }
         }
     }
 
     public void updateRoute(int routeId, Route route) throws SQLException {
-        Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().getCurrentSession();
-            session.beginTransaction();
-            session.update(route);
-            session.getTransaction().commit();
+            sessionFactory.getCurrentSession().update(route);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
         }
     }
 
 
-
     public Route getRouteById(Long routeId) throws SQLException {
-        Session session = null;
         Route route = null;
         try {
-            session = HibernateUtil.getSessionFactory().getCurrentSession();
-            Transaction tx = session.beginTransaction();
-            route = (Route) session.get(RouteImpl.class, routeId);
-            tx.commit();
+            route = (Route) sessionFactory.getCurrentSession().get(RouteImpl.class, routeId);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,14 +43,9 @@ public class RouteDAOImpl implements RouteDAO {
     }
 
     public java.util.List getAllRoute() throws SQLException {
-        Session session = null;
         java.util.List<Route> routes = new ArrayList();
         try {
-            session = HibernateUtil.getSessionFactory().getCurrentSession();
-            Transaction tx = session.beginTransaction();
-            routes = session.createCriteria(RouteImpl.class).list();
-            //flights.
-            tx.commit();
+            routes = sessionFactory.getCurrentSession().createCriteria(RouteImpl.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,12 +53,8 @@ public class RouteDAOImpl implements RouteDAO {
     }
 
     public void deleteRoute(Route route) throws SQLException {
-        Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().getCurrentSession();
-            session.beginTransaction();
-            session.delete(route);
-            session.getTransaction().commit();
+            sessionFactory.getCurrentSession().delete(route);
         } catch (Exception e) {
             e.printStackTrace();
         }

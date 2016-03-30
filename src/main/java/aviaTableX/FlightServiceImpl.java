@@ -10,7 +10,8 @@ import java.util.List;
 /**
  * Created by Артём on 24.03.2016.
  */
-@Service
+@Service("FlightService")
+
 public class FlightServiceImpl implements ServiceFlight {
     @Autowired
     private FlightDAO flightDAO;

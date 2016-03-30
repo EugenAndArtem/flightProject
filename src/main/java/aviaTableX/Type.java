@@ -14,15 +14,15 @@ public class Type {
     private int id;
 
     @Column(name = "type")
-    private  String type;
+    private  int type;
 
     public Type(){}
 
-    public Type(String typeOfFlight){
+    public Type(int typeOfFlight){
         type=typeOfFlight;
     }
 
-    public String getType(){
+    public int getType(){
         return type;
     }
 

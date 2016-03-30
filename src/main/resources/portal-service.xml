@@ -22,16 +22,22 @@
     <!-- See http://docs.jboss.org/hibernate/stable/core/api/index.html?org/hibernate/SessionFactory.html -->
     <!-- See http://docs.jboss.org/hibernate/stable/core/api/index.html?org/hibernate/Session.html -->
 
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}" />
 
     <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="configLocation">
             <value>classpath:hibernate.cfg.xml</value>
         </property>
-        <property name="configurationClass">
-            <value>org.hibernate.cfg.AnnotationConfiguration</value>
-        </property>
+        <!--<property name="configurationClass">
+            <value>org.hibernate.cfg.Loca</value>
+        </property> -->
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.show_sql">true</prop>
@@ -44,17 +50,14 @@
     <!-- Declare a datasource that has pooling capabilities-->
 
 
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-          p:driverClassName="${jdbc.driverClassName}"
-          p:url="${jdbc.url}"
-          p:username="${jdbc.username}"
-          p:password="${jdbc.password}" />
-
-
-
+    <context:annotation-config />
+    <context:component-scan
+            base-package="aviaTableX" />
+    <tx:annotation-driven transaction-manager="transactionManager" />
     <!-- Declare a transaction manager-->
-    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory" />
+
+
 
 </beans>

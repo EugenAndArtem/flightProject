@@ -10,12 +10,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <hibernate-version>5.0.1.Final</hibernate-version>
+        <hibernate-version>4.3.11.Final</hibernate-version>
         <spring-framework-version>4.0.9.RELEASE</spring-framework-version>
     </properties>
-
-
-
 
     <dependencies>
         <dependency>
@@ -108,6 +105,12 @@
             <artifactId>hibernate-ehcache</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.11.Final</version>
+        </dependency>
+
         <!--END Hibernate -->
 
     </dependencies>

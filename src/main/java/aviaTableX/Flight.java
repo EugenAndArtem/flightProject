@@ -9,7 +9,7 @@ public interface Flight {
 
     int getNumber();
 
-    String getType();
+    int getType();
 
     String getPlaneName();
 

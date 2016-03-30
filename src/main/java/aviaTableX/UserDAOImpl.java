@@ -46,7 +46,7 @@ public class UserDAOImpl implements UserDAO{
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             Transaction tx = session.beginTransaction();
-            user = (User) session.get(InnerFlight.class, userId);
+            user = (User) session.get(FlightImpl.class, userId);
             tx.commit();
         } catch (Exception e) {
             e.printStackTrace();

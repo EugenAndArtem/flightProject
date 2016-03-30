@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by Артём on 09.02.2016.
  */
-@Repository
+@Repository("FlightDAO")
 public class FlightDAOImpl implements FlightDAO {
     @Autowired
     private SessionFactory sessionFactory;
@@ -49,7 +49,7 @@ public class FlightDAOImpl implements FlightDAO {
         try {
            // session = HibernateUtil.getSessionFactory().getCurrentSession();
             //Transaction tx = session.beginTransaction();
-            flight = (Flight) sessionFactory.getCurrentSession().get(InnerFlight.class, flightId);
+            flight = (Flight) sessionFactory.getCurrentSession().get(FlightImpl.class, flightId);
            // tx.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,7 +63,7 @@ public class FlightDAOImpl implements FlightDAO {
         try {
            // session = HibernateUtil.getSessionFactory().getCurrentSession();
            // Transaction tx = session.beginTransaction();
-            flights = sessionFactory.getCurrentSession().createCriteria(InnerFlight.class).list();
+            flights = sessionFactory.getCurrentSession().createCriteria(FlightImpl.class).list();
             //flights.
            // tx.commit();
         } catch (Exception e) {

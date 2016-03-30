@@ -3,9 +3,9 @@ package aviaTableX;
 import java.sql.SQLException;
 
 /**
- * Created by Артём on 09.02.2016.
+ * Created by Артём on 30.03.2016.
  */
-public interface RouteDAO {
+public interface ServiceRoute {
     public void addRoute(Route route) throws SQLException;
     public void updateRoute(int routeId, Route route) throws SQLException;
     public Route getRouteById(Long routeId) throws SQLException;
