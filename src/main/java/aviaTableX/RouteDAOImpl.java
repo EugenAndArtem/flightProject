@@ -23,7 +23,7 @@ public class RouteDAOImpl implements RouteDAO {
         }
     }
 
-    public void updateRoute(int routeId, Route route) throws SQLException {
+    public void updateRoute(Route route) throws SQLException {
         try {
             sessionFactory.getCurrentSession().update(route);
         } catch (Exception e) {

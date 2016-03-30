@@ -28,7 +28,7 @@ public class FlightDAOImpl implements FlightDAO {
         }
     }
 
-    public void updateFlight(int flightId, Flight flight) throws SQLException {
+    public void updateFlight(Flight flight) throws SQLException {
         //Session session = null;
         try {
            /* session = HibernateUtil.getSessionFactory().getCurrentSession();

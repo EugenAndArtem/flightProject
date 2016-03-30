@@ -14,19 +14,29 @@ public class Type {
     private int id;
 
     @Column(name = "type")
-    private  int type;
+    private int type;
 
-    public Type(){}
-
-    public Type(int typeOfFlight){
-        type=typeOfFlight;
+    public Type() {
     }
 
-    public int getType(){
+    public Type(int typeOfFlight) {
+        type = typeOfFlight;
+    }
+
+    public int getType() {
         return type;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setId(int id) {
+
+        this.id = id;
     }
 }

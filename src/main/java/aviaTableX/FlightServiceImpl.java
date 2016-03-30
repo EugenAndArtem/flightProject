@@ -21,8 +21,8 @@ public class FlightServiceImpl implements ServiceFlight {
         flightDAO.addFlight(flight);
     }
     @Transactional
-    public void updateFlight(int flightId, Flight flight) throws SQLException {
-        flightDAO.updateFlight(flightId,flight);
+    public void updateFlight(Flight flight) throws SQLException {
+        flightDAO.updateFlight(flight);
     }
     @Transactional
     public Flight getFlightById(int flightId) throws SQLException {

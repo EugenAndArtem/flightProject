@@ -18,8 +18,8 @@ public class RouteServiceImpl implements ServiceRoute {
         routeDAO.addRoute(route);
     }
     @Transactional
-    public void updateRoute(int routeId, Route route) throws SQLException {
-        routeDAO.updateRoute(routeId, route);
+    public void updateRoute(Route route) throws SQLException {
+        routeDAO.updateRoute(route);
     }
     @Transactional
     public Route getRouteById(Long routeId) throws SQLException {
