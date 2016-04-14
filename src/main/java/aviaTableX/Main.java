@@ -1,6 +1,9 @@
 package aviaTableX;
 
-import org.hibernate.SessionFactory;
+import model.Flight;
+import model.FlightImpl;
+import model.Route;
+import model.RouteImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,7 +17,7 @@ public class Main {
         ApplicationContext appContext =
                 new ClassPathXmlApplicationContext("portal-service.xml");
 
-        SessionFactory session= (SessionFactory)appContext.getBean("sessionFactory");
+        //SessionFactory session= (SessionFactory)appContext.getBean("sessionFactory");
         ServiceFlight flightService = (ServiceFlight)appContext.getBean("FlightService");
         ServiceRoute routeService = (ServiceRoute)appContext.getBean("RouteService");
         ServiceType typeService = (ServiceType)appContext.getBean("TypeService");

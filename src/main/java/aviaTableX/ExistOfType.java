@@ -1,5 +1,8 @@
 package aviaTableX;
 
+
+import model.Type;
+
 /**
  * Created by Артём on 26.02.2016.
  */

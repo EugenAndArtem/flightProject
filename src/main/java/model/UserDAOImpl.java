@@ -1,5 +1,6 @@
-package aviaTableX;
+package model;
 
+import aviaTableX.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

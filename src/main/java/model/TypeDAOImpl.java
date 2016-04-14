@@ -1,4 +1,4 @@
-package aviaTableX;
+package model;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;

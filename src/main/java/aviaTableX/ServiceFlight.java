@@ -1,5 +1,10 @@
 package aviaTableX;
 
+
+
+
+import model.Flight;
+
 import java.sql.SQLException;
 
 /**

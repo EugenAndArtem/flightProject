@@ -1,4 +1,4 @@
-package aviaTableX;
+package model;
 
 /**
  * Created by Артём on 05.02.2016.
@@ -21,7 +21,7 @@ public class FlightImpl implements Flight, Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "flighTtype")
     private Type type;
 
@@ -37,7 +37,7 @@ public class FlightImpl implements Flight, Serializable {
     @Column(name = "flightTime")
     private String flightTime;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idRoute")
     private RouteImpl route;////////////////////
 

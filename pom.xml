@@ -6,7 +6,7 @@
 
     <groupId>flightProject</groupId>
     <artifactId>flightProject</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

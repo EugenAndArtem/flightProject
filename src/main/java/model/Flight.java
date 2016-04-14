@@ -1,4 +1,4 @@
-package aviaTableX;
+package model;
 
 /**
  * Created by Артём on 05.02.2016.
